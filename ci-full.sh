@@ -11,6 +11,13 @@ cargo clippy --all-targets --all-features
 
 cargo check --no-default-features --features minimal-application
 
+# Build to update assets
+cargo build
+
+# Update assets
+PATH="./target/debug:$PATH" assets/create.sh
+
+# Build with updated assets
 cargo build
 
 cargo test --doc
@@ -18,7 +25,5 @@ cargo test --doc
 cargo test
 
 PATH="./target/debug:$PATH" tests/syntax-tests/test_custom_assets.sh
-
-PATH="./target/debug:$PATH" assets/create.sh
 
 PATH="./target/debug:$PATH" tests/syntax-tests/regression_test.sh
